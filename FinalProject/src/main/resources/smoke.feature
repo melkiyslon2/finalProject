@@ -54,7 +54,7 @@ Feature: Smoke
 
         Examples:
         | homePage | email | password |
-        | https://www.amazon.com | vodolazskiykolya@gmail.com | BIGBEN.COM |
+        | https://www.amazon.com | vodolazskiykolya@gmail.com | YourPassHere |
 
         Scenario Outline: Check add to cart
           Given User opens '<homePage>' page
