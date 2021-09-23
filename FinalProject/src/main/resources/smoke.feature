@@ -54,7 +54,7 @@ Feature: Smoke
 
         Examples:
         | homePage | email | password |
-        | https://www.amazon.com | vodolazskiykolya@gmail.com | BIGBEN.COM |
+        | https://www.amazon.com | vodolazskiykolya@gmail.com |passwordHere |
 
         Scenario Outline: Check add to cart
           Given User opens '<homePage>' page
@@ -97,4 +97,4 @@ Feature: Smoke
 
     Examples:
     | homePage  | email | password  | keyword | logo  |
-    | https://www.amazon.com  | vodolazskiykolya@gmail.com  | BIGBEN.COM  | iPhone  | ref=nav_logo  |
+    | https://www.amazon.com  | vodolazskiykolya@gmail.com  | passwordHere  | iPhone  | ref=nav_logo  |
