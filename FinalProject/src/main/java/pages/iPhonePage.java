@@ -15,6 +15,14 @@ public class iPhonePage extends BasePage{
     @FindBy(xpath = "//a[@id='quantity_1']")
     private WebElement chooseQuantity;
 
+    @FindBy(xpath = "//button[@id='a-autoid-7-announce']")
+    private WebElement changeCapacity;
+    @FindBy(xpath = "//div[@id='availability']/span[@class='a-size-medium a-color-price']")
+    private WebElement errorMessage;
+
+    @FindBy(xpath = "//span[contains(text(),'Apple iPhone 11 Pro')]")
+    private WebElement iPhone11;
+
     public iPhonePage(WebDriver driver) {
         super(driver);
     }
@@ -30,6 +38,19 @@ public class iPhonePage extends BasePage{
     public void changeQuantity(){
         changeQuantityButton.click();
         chooseQuantity.click();
+    }
+
+    public void changeCapacity(){
+        changeCapacity.click();
+    }
+
+    public String errorMessage(){
+        waitForPageLoadComplete(10);
+        return errorMessage.getText();
+    }
+
+    public void loadIPhone(){
+        iPhone11.click();
     }
 
 }
