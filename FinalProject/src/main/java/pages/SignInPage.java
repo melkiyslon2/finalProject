@@ -19,6 +19,11 @@ public class SignInPage extends BasePage{
     private WebElement phoneNumberField;
     @FindBy(xpath = "//span[@class='a-list-item']")
     private WebElement errorMessage;
+    @FindBy(xpath = "//a[@id='auth-fpp-link-bottom']")
+    private WebElement forgotPassword;
+
+    @FindBy(xpath = "//h1")
+    private WebElement passwordAssistance;
 
     public SignInPage(WebDriver driver) {
         super(driver);
@@ -40,6 +45,14 @@ public class SignInPage extends BasePage{
 
     public String nonCorrectPasswordMessage(){
         return errorMessage.getText();
+    }
+
+    public void forgotPassword(){
+        forgotPassword.click();
+    }
+
+    public String passwordAssistance(){
+        return passwordAssistance.getText();
     }
 
 }
