@@ -166,6 +166,17 @@ public class DefinitionSteps {
         assertEquals(signInPage.nonCorrectPasswordMessage(),"Your password is incorrect");
     }
 
+    @And("User click 'homePage' icon")
+    public void clickHomePageIcon(){
+        cartPage = pageFactoryManager.getCartPage();
+        cartPage.goToHomePage();
+    }
+
+    @And("User check that url contains {string} word")
+    public void checkUrlOfHomePage(final String keyword){
+        assertTrue(driver.getCurrentUrl().contains(keyword));
+    }
+
     @After
     public void tearDown() {
         driver.close();
