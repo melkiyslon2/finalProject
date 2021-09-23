@@ -3,6 +3,17 @@ Feature: Smoke
   I want to test all main site functionality
   So that I can be sure that site works correctly
 
+  Scenario Outline: Check url contains keyword
+    Given User opens '<homePage>' page
+    And User checks search field visibility
+    When User makes search by keyword '<keyword>'
+    And User clicks search button
+    Then User checks that url contains keyword '<keyword>'
+
+    Examples:
+      | homePage               | keyword |
+      | https://www.amazon.com | laptop  |
+
   Scenario Outline: Check change amount of phones in cart
     Given User opens '<homePage>' page
     And User checks search field visibility
@@ -14,21 +25,9 @@ Feature: Smoke
     And User goes to cart
     Then User check amount of products in cart '<quantity>'
 
-
     Examples:
       | homePage  | keyword | quantity  |
-      | https://www.amazon.com | iPhone | 2 |
-
-  Scenario Outline: Check url contains keyword
-    Given User opens '<homePage>' page
-    And User checks search field visibility
-    When User makes search by keyword '<keyword>'
-    And User clicks search button
-    Then User checks that url contains keyword '<keyword>'
-
-    Examples:
-      | homePage               | keyword |
-      | https://www.amazon.com | laptop  |
+      | https://www.amazon.com | iPhone X | 2 |
 
     Scenario Outline: Check sort product button
       Given User opens '<homePage>' page
@@ -54,21 +53,21 @@ Feature: Smoke
 
         Examples:
         | homePage | email | password |
-        | https://www.amazon.com | vodolazskiykolya@gmail.com |passwordHere |
+        | https://www.amazon.com | vodolazskiykolya@gmail.com | BIGBEN.COM |
 
         Scenario Outline: Check add to cart
           Given User opens '<homePage>' page
           And User checks search field visibility
           When User makes search by keyword '<keyword>'
           And User clicks search button
-          And User clicks on the phone
+          And User clicks on the iPhone 11
           When User click add to cart button
           And User goes to cart
           Then User check amount of products in cart '<quantity>'
 
           Examples:
           | homePage  | keyword |  quantity   |
-          | https://www.amazon.com | iPhone | 1 |
+          | https://www.amazon.com | iPhone 11 | 1 |
 
   Scenario Outline: Check non-correct password while log in
     Given User opens '<homePage>' page
@@ -97,4 +96,43 @@ Feature: Smoke
 
     Examples:
     | homePage  | email | password  | keyword | logo  |
-    | https://www.amazon.com  | vodolazskiykolya@gmail.com  | passwordHere  | iPhone  | ref=nav_logo  |
+    | https://www.amazon.com  | vodolazskiykolya@gmail.com  | BIGBEN.COM  | iPhone X | ref=nav_logo  |
+
+    Scenario Outline: Check change language to Deutsch
+      Given User opens '<homePage>' page
+      And User click on change language button
+      And User changes language to Deutsch
+      When User click submit button
+      Then User check that language is Deutsch
+
+      Examples:
+      | homePage  |
+      | https://www.amazon.com  |
+
+
+  Scenario Outline: Check try to buy iPhone that is unable to buy
+    Given User opens '<homePage>' page
+    And User checks search field visibility
+    When User makes search by keyword '<keyword>'
+    And User clicks search button
+    And User clicks on the phone
+    And User clicks on changeCapacity button to change default parameter
+    Then User gets message that phone is unable to buy
+
+    Examples:
+      | homePage                | keyword  |
+      | https://www.amazon.com/ | iPhone X |
+
+  Scenario Outline: forgot password
+
+    Given User opens '<homePage>' page
+    And User click signIn button
+    When User enters email '<email>'
+    And User clicks the 'forgot your password'
+    Then 'Password assistance' window opens
+
+    Examples:
+    | homePage  | email |
+    | https://www.amazon.com/  | vodolazskiykolya@gmail.com |
+
+
