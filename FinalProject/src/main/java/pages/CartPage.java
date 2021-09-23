@@ -5,9 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.awt.*;
-import java.security.Key;
-
 public class CartPage extends BasePage{
 
     @FindBy(xpath = "//span[@id='sc-subtotal-label-activecart']")
@@ -18,6 +15,8 @@ public class CartPage extends BasePage{
     private WebElement chooseChangeAmountButton;
     @FindBy(xpath = "//a[@id='quantity_2']")
     private WebElement chooseAmount;
+    @FindBy(xpath = "//a[@id='nav-logo-sprites']")
+    private WebElement homePageLogo;
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -42,5 +41,9 @@ public class CartPage extends BasePage{
         chooseChangeAmountButton.click();
         chooseAmount.isDisplayed();
         chooseAmount.click();
+    }
+
+    public void goToHomePage(){
+        homePageLogo.click();
     }
 }
