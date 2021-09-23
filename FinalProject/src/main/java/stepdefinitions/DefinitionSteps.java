@@ -177,6 +177,53 @@ public class DefinitionSteps {
         assertTrue(driver.getCurrentUrl().contains(keyword));
     }
 
+    @And("User click on change language button")
+    public void changeLanguage(){
+        homePage.openChangeLanguagePage();
+    }
+
+    @And("User changes language to Deutsch")
+    public void changeToLanguageDeusch(){
+        homePage.changeLanguageToDeusch();
+    }
+
+    @And("User click submit button")
+    public void clickSubmit(){
+        homePage.clickSubmitButton();
+    }
+
+    @And("User check that language is Deutsch")
+    public void checkLanguage(){
+        assertEquals(homePage.returnLanguage(),"Deutsch");
+    }
+
+    @And("User clicks on changeCapacity button to change default parameter")
+    public void changeCapacity(){
+        iphonePage = pageFactoryManager.getIPhonePage();
+        iphonePage.changeCapacity();
+    }
+
+    @And("User gets message that phone is unable to buy")
+    public void phoneIsNotAvailableMessage(){
+        homePage.explicitWait();
+        assertTrue(iphonePage.errorMessage().contains("Currently unavailable"));
+    }
+
+    @And("User clicks the 'forgot your password'")
+    public void forgotPassword(){
+        signInPage.forgotPassword();
+    }
+
+    @And("'Password assistance' window opens")
+    public void passwordAssistance(){
+        assertTrue(signInPage.passwordAssistance().contains("Password assistance"));
+    }
+
+    @And("User clicks on the iPhone 11")
+    public void openIPhone(){
+        iphonePage = pageFactoryManager.getIPhonePage();
+        iphonePage.loadIPhone();
+    }
     @After
     public void tearDown() {
         driver.close();
