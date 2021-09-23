@@ -49,12 +49,12 @@ Feature: Smoke
         Given User opens '<homePage>' page
         And User click signIn button
         And User enters email '<email>'
-        And User enters password '<password>'
+        When User enters password '<password>'
         Then User checks if he is loggined
 
         Examples:
         | homePage | email | password |
-        | https://www.amazon.com | vodolazskiykolya@gmail.com | YourPassHere |
+        | https://www.amazon.com | vodolazskiykolya@gmail.com | BIGBEN.COM |
 
         Scenario Outline: Check add to cart
           Given User opens '<homePage>' page
@@ -62,7 +62,7 @@ Feature: Smoke
           When User makes search by keyword '<keyword>'
           And User clicks search button
           And User clicks on the phone
-          And User click add to cart button
+          When User click add to cart button
           And User goes to cart
           Then User check amount of products in cart '<quantity>'
 
@@ -74,10 +74,27 @@ Feature: Smoke
     Given User opens '<homePage>' page
     And User click signIn button
     And User enters email '<email>'
-    And User enters password '<password>'
+    When User enters password '<password>'
     And User gets error message
     Then User check that he have got errorMessage
 
     Examples:
       | homePage | email | password |
       | https://www.amazon.com | vodolazskiykolya@gmail.com | nonCorrect |
+
+  Scenario Outline: Check go to amazon home page icon
+    Given User opens '<homePage>' page
+    And User click signIn button
+    And User enters email '<email>'
+    And User enters password '<password>'
+    When User makes search by keyword '<keyword>'
+    And User clicks search button
+    And User clicks on the phone
+    And User click add to cart button
+    And User goes to cart
+    And User click 'homePage' icon
+    Then User check that url contains '<logo>' word
+
+    Examples:
+    | homePage  | email | password  | keyword | logo  |
+    | https://www.amazon.com  | vodolazskiykolya@gmail.com  | BIGBEN.COM  | iPhone  | ref=nav_logo  |
