@@ -19,6 +19,15 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//span[@id='nav-your-amazon-text']")
     private WebElement userName;
 
+    @FindBy(xpath = "//a[@id='icp-nav-flyout']")
+    private WebElement languageButton;
+    @FindBy(xpath = "//span[@class='a-label a-radio-label'][contains(text(),'Deutsch')]")
+    private WebElement deuschLanguage;
+    @FindBy(xpath = "//input[@class='a-button-input']")
+    private WebElement submitLanguage;
+    @FindBy(xpath = "//span[@class='icp-color-base'][contains(text(),'Deutsch')]")
+    private WebElement language;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -48,4 +57,22 @@ public class HomePage extends BasePage{
         userName.isDisplayed();
         return userName.getText();
     }
+
+    public void openChangeLanguagePage(){
+        languageButton.isDisplayed();
+        languageButton.click();
+    }
+
+    public void changeLanguageToDeusch(){
+        deuschLanguage.click();
+    }
+
+    public void clickSubmitButton(){
+        submitLanguage.click();
+    }
+
+    public String returnLanguage(){
+        return language.getText();
+    }
+
 }
