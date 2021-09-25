@@ -53,7 +53,7 @@ Feature: Smoke
 
         Examples:
         | homePage | email | password |
-        | https://www.amazon.com | vodolazskiykolya@gmail.com | BIGBEN.COM |
+        | https://www.amazon.com | hgfvtvbcknv@gmail.com | Password |
 
         Scenario Outline: Check add to cart
           Given User opens '<homePage>' page
@@ -79,7 +79,7 @@ Feature: Smoke
 
     Examples:
       | homePage | email | password |
-      | https://www.amazon.com | vodolazskiykolya@gmail.com | nonCorrect |
+      | https://www.amazon.com | ygbuudxb@gmail.com | nonCorrect |
 
   Scenario Outline: Check go to amazon home page icon
     Given User opens '<homePage>' page
@@ -96,7 +96,7 @@ Feature: Smoke
 
     Examples:
     | homePage  | email | password  | keyword | logo  |
-    | https://www.amazon.com  | vodolazskiykolya@gmail.com  | BIGBEN.COM  | iPhone X | ref=nav_logo  |
+    | https://www.amazon.com  |ygghjig@gmail.com  | Password  | iPhone X | ref=nav_logo  |
 
     Scenario Outline: Check change language to Deutsch
       Given User opens '<homePage>' page
@@ -133,6 +133,6 @@ Feature: Smoke
 
     Examples:
     | homePage  | email |
-    | https://www.amazon.com/  | vodolazskiykolya@gmail.com |
+    | https://www.amazon.com/  | voguindf@com |
 
 
