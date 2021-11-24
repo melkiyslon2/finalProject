@@ -54,7 +54,7 @@ Feature: Smoke
 
         Examples:
         | homePage | email | password |
-        | https://www.amazon.com | лпанглналгaанлkналнлil.налн | 56рере |
+        | https://www.amazon.com | rh4hehh | gt6fdjy 
 
         Scenario Outline: Check add to cart
           Given User opens '<homePage>' page
@@ -80,4 +80,4 @@ Feature: Smoke
 
     Examples:
       | homePage | email | password |
-      | https://www.amazon.com |анлнлнланланл | nonCorrect |
+      | https://www.amazon.com | fyky yykfykyfkfy|kfyfyk|
